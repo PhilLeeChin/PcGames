@@ -12,6 +12,27 @@ class SessionsController < ApplicationController
         else
             render :new
         end
-    end   
+    end
+
+    def destroy
+        session.clear
+        redirect_to "/"
+    end
+
+    def omni
+        @user = User.find_with_omni(auth)
+        if @user
+            session[:user_id] = @user.id
+            redirect_to resourzes_path
+        else
+             redirect_to login_path
+        end
+    end
+
+    private
+
+    def auth
+        request.env['omni.auth']
+    end
      
 end
