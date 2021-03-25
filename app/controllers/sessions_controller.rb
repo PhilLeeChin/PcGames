@@ -1,12 +1,15 @@
 class SessionsController < ApplicationController
-    
+    def login
+        @user = User.new
+    end
+
     def signup
-      @user = User.new
+        @user = User.new
     end   
 
     def create
-        @user = User.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
+        @user = User.find_by(username: sessison_params[:username])
+        if @user && @user.authenticate(sessison_params[:password])
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
@@ -14,9 +17,20 @@ class SessionsController < ApplicationController
         end
     end
 
+    def new
+        @user = User.find_by(username: sessison_params[:username])
+        if @user && @user.authenticate(sessison_params[:password])
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else
+            flash[:error] = "Login invalid, check credentials and try again"
+            redirect_to login_path
+        end
+    end
+
     def destroy
         session.clear
-        redirect_to "/"
+        redirect_to '/'
     end
 
     def omni
@@ -30,6 +44,10 @@ class SessionsController < ApplicationController
     end
 
     private
+
+    def sessison_params
+        params.require(:user).permit(:username, :email, :password)
+    end
 
     def auth
         request.env['omni.auth']
