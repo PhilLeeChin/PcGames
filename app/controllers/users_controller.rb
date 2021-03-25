@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-    def new
+   before_action :redirect_if_not_logged_in
 
-    end
-
-    def create
-        
-    end
+   def show
+      @user = User.find_by_id(params[:id])
+      redirect_to '/' if !@user
+   end
 end
