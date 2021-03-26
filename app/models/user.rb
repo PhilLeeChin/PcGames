@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :commented_games, through: :comments, source: :game
     has_many :genres, through: :games
 
+    has_secure_password
     validates_presence_of :username, :email, :password
     validates_uniqueness_of :username, :email
 
