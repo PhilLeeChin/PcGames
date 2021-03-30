@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#new"
   
   # logout routes
-  delete '/signout', to: "sessions#signout"
+  delete '/signout', to: "sessions#destroy"
 
   get '/auth/:provider/callback', to: "sessions#omni"
   
