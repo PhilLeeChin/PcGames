@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
-  # get '/' => 'sessions"pcspace'
+  root to: "sessions#pcspace"
 
-  get '/register' => 'users#new'
-  post '/register' => 'users#create'
+  get '/register', to: "users#new"
+  # post '/register' => 'users#create'
 
   # login routes
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
   
   # logout routes
-  delete '/signout' => 'sessions#destroy'
+  get '/signout', to: "sessions#destroy"
+
+  get '/auth/:provider/callback', to: "sessions#omniauth"
   
 
   resources :genres
   resources :comments
-  resources :users
+  resources :resourzes
+  resources :users, only: [:show, :edit, :update, :create]
   resources :games
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
