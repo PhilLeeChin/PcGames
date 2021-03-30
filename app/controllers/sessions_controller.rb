@@ -34,10 +34,11 @@ class SessionsController < ApplicationController
     end
 
     def omni
-        @user = User.find_with_omni(auth)
+        # binding.irb
+        @user = User.find_with_omniauth(auth)
         if @user
             session[:user_id] = @user.id
-            redirect_to resourzes_path
+            redirect_to games_path
         else
              redirect_to login_path
         end
@@ -45,12 +46,12 @@ class SessionsController < ApplicationController
 
     private
 
-    def sessison_params
+    def session_params
         params.require(:user).permit(:username, :email, :password)
     end
 
     def auth
-        request.env['omni.auth']
+        request.env['omniauth.auth']
     end
      
 end

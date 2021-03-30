@@ -10,8 +10,8 @@ class User < ApplicationRecord
     validates_presence_of :username, :email, :password
     validates_uniqueness_of :username, :email
 
-    def self.find_with_omni(auth)
-        # binding.pry
+    def self.find_with_omniauth(auth)
+        # binding.irb
         self.find_or_create_by(uid: auth[:uid]) do |u|
             u.username = auth[:info][:name]
             u.email = auth[:info][:email]
