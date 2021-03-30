@@ -15,5 +15,18 @@
   <h1> The World Of PC Gamers </h2>
 
 <p>Get details on the best games on PC, right here, right now. </p>
+
+  <div>
+   <% if session.has_key?(:user_id) %>
+      <%= link_to "Sign Out", signout_path, method: :delete %>
+   <% else %>
+     <%= link_to '<button type="button">Login</button>'.html_safe, login_path %>
+     <br>
+      <br>
+     <%= link_to '<button type="button">Register</button>'.html_safe, register_path %>
+   <% end %>
+
+  </div>
+
 </head>
 </html>
