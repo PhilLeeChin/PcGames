@@ -1,0 +1,31 @@
+<h1> Sign up </h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @user, url: register_path do |f| %>
+    
+    <%= f.label :username %>
+    <%= f.text_field :username %> <br></br>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %> <br></br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %> <br></br>
+
+    <%= f.submit "Register" %>
+<% end %> 
+<%= form_tag("/auth/google_oauth2") do %>
+    <%= submit_tag "Google Login"%>
+<% end %>
