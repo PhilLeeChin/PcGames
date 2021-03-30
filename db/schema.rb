@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_193804) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "uid"
+    t.decimal "uid"
   end
 
   add_foreign_key "comments", "games"
