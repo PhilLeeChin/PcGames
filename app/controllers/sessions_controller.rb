@@ -1,30 +1,16 @@
 class SessionsController < ApplicationController
     def login
         @user = User.new
-    end
-
-    def register
-        @user = User.new
     end   
 
     def create
-        @user = User.find_by(username: sessison_params[:username])
-        if @user && @user.authenticate(sessison_params[:password])
+        @user = User.new(session_params)
+        # binding.irb
+        if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            render :new
-        end
-    end
-
-    def new
-        @user = User.find_by(username: sessison_params[:username])
-        if @user && @user.authenticate(sessison_params[:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
-        else
-            flash[:error] = "Login invalid, check credentials and try again"
-            redirect_to login_path
+            render :login
         end
     end
 
@@ -34,11 +20,12 @@ class SessionsController < ApplicationController
     end
 
     def omni
-        # binding.irb
         @user = User.find_with_omniauth(auth)
+        #  binding.irb
         if @user
             session[:user_id] = @user.id
-            redirect_to games_path
+            #binding.irb
+            redirect_to user_path(@user)
         else
              redirect_to login_path
         end

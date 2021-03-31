@@ -3,10 +3,9 @@ class User < ApplicationRecord
     has_many :games
     has_many :comments
     has_many :commented_games, through: :comments, source: :game
-    has_many :genres, through: :games
 
     has_secure_password
-    has_many :resourzes, through: :comments
+    # has_many :resourzes, through: :comments
     validates_presence_of :username, :email, :password
     validates_uniqueness_of :username, :email
 

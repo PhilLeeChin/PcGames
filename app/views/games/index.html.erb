@@ -1,0 +1,6 @@
+<h1>Favorite Games List</h1>
+<% @games.each do |game|%>
+  <div>
+    <h3><%= link_to game.title, game_path(game) %> </h3>
+  </div><br>
+<% end %>

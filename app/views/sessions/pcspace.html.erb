@@ -18,15 +18,17 @@
 
   <div>
    <% if session.has_key?(:user_id) %>
-      <%= link_to "Sign Out", signout_path, method: :delete %>
+      <%= link_to '<button type="button">Add Game</button>'.html_safe, new_game_path %>
+      <%= link_to '<button type="button">Game List</button>'.html_safe, games_path %>
+      <%= link_to '<button type="button">Sign Out</button>'.html_safe, signout_path, method: :delete %>
    <% else %>
-     <%= link_to '<button type="button">Login</button>'.html_safe, login_path %>
-     <br>
+      <%= link_to '<button type="button">Login</button>'.html_safe, login_path %>
       <br>
-     <%= link_to '<button type="button">Register</button>'.html_safe, register_path %>
+       <br>
+      <%= link_to '<button type="button">Register</button>'.html_safe, register_path %>
    <% end %>
-
   </div>
+
 
 </head>
 </html>

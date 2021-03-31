@@ -13,11 +13,9 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: "sessions#omni"
   
-
-  resources :genres, only: [:show, :edit]
   resources :comments, only: [:show, :edit]
-  resources :resourzes
+  # resources :resourzes
   resources :users, only: [:show]
-  resources :games, only: [:show, :index, :new, :edit]
+  resources :games, only: [:show, :index, :new, :edit, :create, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

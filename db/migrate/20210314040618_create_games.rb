@@ -3,8 +3,8 @@ class CreateGames < ActiveRecord::Migration[6.1]
     create_table :games do |t|
       t.string :title
       t.string :developer
+      t.string :genre
       t.belongs_to :user, null: false, foreign_key: true
-      t.belongs_to :genre, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -1,0 +1,13 @@
+<h1 align="center"><g><%= @game.title%></g></h1>
+<%= form_for(@game) do |f| %>
+  <label>Game title:</label><br>
+  <%= f.text_field :title %><br>
+
+  <label>Game Developer</label><br>
+  <%= f.text_field :developer %><br>
+
+  <label>Genre</label><br>
+  <%= f.text_field :genre %><br>
+
+  <%= f.submit %>
+<% end %>
