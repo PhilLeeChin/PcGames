@@ -4,13 +4,25 @@ class SessionsController < ApplicationController
     end   
 
     def create
-        @user = User.new(session_params)
+        @user = User.create(session_params)
         # binding.irb
         if @user.save
+            # binding.irb
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            render :login
+            redirect_to register_path
+        end
+    end
+
+    def new
+        @user = User.find_by(email: session_params[:email])
+        if @user && @user.authenticate(session_params[:password])
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else
+            flash[:error] = "Login invalid, please try again"
+            redirect_to login_path
         end
     end
 

@@ -2,11 +2,16 @@ class GamesController < ApplicationController
     # before_action :redirect_if_not_logged_in
 
     def index
-        @games = current_user.games
+        if params[:user_id] && @user = user.find_by_id(params[:user_id])
+            @games = @user.games
+        else
+            @error = "That post doesn't exist" if params[:user_id]
+            @games = Game.all
+        end
     end
 
     def show
-        @game = Game.find(params[:id])
+        @game = Game.find_by_id(params[:id])
     end
 
     def new
