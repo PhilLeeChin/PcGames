@@ -13,9 +13,13 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: "sessions#omni"
   
-  resources :comments, only: [:show, :edit]
+  resources :comments
   # resources :resourzes
-  resources :users, only: [:show]
-  resources :games, only: [:show, :index, :new, :edit, :create, :update]
+  resources :users do
+    resources :game, only: [:new, :create, :index]
+  end
+  resources :games do
+    resources :comments, only: [:new, :create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
