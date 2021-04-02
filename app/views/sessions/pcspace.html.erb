@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag 'layout' %>
+  <%= stylesheet_link_tag 'main' %>
 <style> 
    
-  
-
-    
-  
-  
-    
-  </style>
+</style>
+</head>
+<body>
   <h1> The World Of PC Gamers </h2>
 
-<p>Get details on the best games on PC, right here, right now. </p>
+  <p>Get details on the best games on PC, right here, right now. </p>
 
-  <div>
-   <% if session.has_key?(:user_id) %>
+  <div class="flex-parent jc-center">
+  <% if session.has_key?(:user_id) %>
       <%= link_to '<button type="button">Add Game</button>'.html_safe, new_game_path %>
       <%= link_to '<button type="button">Game List</button>'.html_safe, games_path %>
       <%= link_to '<button type="button">Sign Out</button>'.html_safe, signout_path, method: :delete %>
-   <% else %>
+  <% else %>
       <%= link_to '<button type="button">Login</button>'.html_safe, login_path %>
       <br>
-       <br>
+      <br>
       <%= link_to '<button type="button">Register</button>'.html_safe, register_path %>
-   <% end %>
+  <% end %>
   </div>
 
-
-</head>
+  <div>
+    <% if flash[:message] %>
+      <%= flash[:message] %>
+    <% end %>
+  </div>
+</body>
 </html>
