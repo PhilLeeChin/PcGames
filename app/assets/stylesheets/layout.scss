@@ -1,0 +1,43 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+img {
+  border-radius: 12px;
+  width: 100%;
+  height: 500px;
+}
+
+button, .submit, .google{
+  background-color: #0057ac;
+  border: 2px solid black;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 125px;
+}
+
+.form-control{
+  width: 10%;
+  margin: 2px 0;
+  border-radius: 2px;
+}
+
+button:hover, .submit:hover .google:hover{
+  background-color: gray;
+  color: black;
+}
+
+h1, p, .form-control{
+  font-family: 'Lobster', cursive;
+}
+
+h3{
+  font-family: 'Kalam', cursive;
+}
