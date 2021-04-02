@@ -1,8 +1,11 @@
-<h1> Welcome <%= @user.username %> to Pc Games</h2>
+<% if logged_in? %>
+    <h1> Welcome <%= @user.username %> to Pc Games</h2>
+<% end %>
 
 <p> Find best played games here </p>
 
 <div>
     <%= link_to '<button type="button">Add Game</button>'.html_safe, new_game_path %>
     <%= link_to '<button type="button">Game List</button>'.html_safe, games_path %>
+    <%= link_to '<button type="button">Sign Out</button>'.html_safe, signout_path, method: :delete %>
 </div>
