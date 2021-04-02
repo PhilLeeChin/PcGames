@@ -2,5 +2,6 @@
 <% @games.each do |game|%>
   <div>
     <h3><%= link_to game.title, game_path(game) %> </h3>
+    <%= link_to '<button type="button">Add Comment</button>'.html_safe, new_comment_path %>
   </div><br>
 <% end %>

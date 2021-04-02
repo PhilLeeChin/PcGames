@@ -1,6 +1,11 @@
 <h2><%= @game.title %></h2>
-<p>A <%= @game.developer %> post.</p>
-<hr />
+<p><%= @game.developer %></p>
+
 <p><%= @game.genre %></p>
 
-<%= link_to "edit", edit_game_path(@game) %>
+<h4>Comments:</h4>
+<% @game.comments.each do |c|%>
+    <p><strong><%= c.user.username%></strong>: <%= c.content%> </p>
+<% end %>
+<%= link_to '<button type="button">Post Comment</button>'.html_safe, new_game_comment_path(@game)%>
+<%= link_to '<button type="button">Edit</button>'.html_safe, edit_game_path(@game) %>
