@@ -2,10 +2,10 @@ class GamesController < ApplicationController
     # before_action :redirect_if_not_logged_in
 
     def index
-        if params[:user_id] && @user = user.find_by_id(params[:user_id])
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @games = @user.games
         else
-            @error = "That post doesn't exist" if params[:user_id]
+            @error = "That game doesn't exist" if params[:user_id]
             @games = Game.all
         end
     end
@@ -32,21 +32,25 @@ class GamesController < ApplicationController
 
     def edit
         @game = Game.find_by(id: params[:id])
+        if @game.user != current_user
+            redirect_to game_path(@game)
+        end
     end
 
     def update
         @game = Game.find_by(id: params[:id])
         # binding.irb
-        if @game.user = current_user
+        if @game.user == current_user
             @game.update(game_params)
-            redirect_to game_path(@game)
-        else
-            render :edit
         end
+        redirect_to game_path(@game)
     end
 
     def destroy
-        @game = Game.find(params[:id]).destroy
+        @game = Game.find(params[:id])
+        if @game.user == current_user
+            @game.destroy
+        end
         redirect_to games_path
     end
 
