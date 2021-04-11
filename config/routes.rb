@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # logout routes
   delete '/signout', to: "sessions#destroy"
 
+  # post '/edit', to: "games#edit"
+
   get '/auth/:provider/callback', to: "sessions#omni"
   
   resources :comments
