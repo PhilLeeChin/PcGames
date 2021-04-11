@@ -1,11 +1,17 @@
-<h2><%= @game.title %></h2>
-<p><%= @game.developer %></p>
+<label><strong>Game title: <%= @game.title %></strong></label><br><br>
 
-<p><%= @game.genre %></p>
+<label><strong>Developer: <%= @game.developer %></strong></label><br><br>
 
-<h4>Comments:</h4>
+<label><strong>Genre: <%= @game.genre %></strong></label><br><br>
+<h1>***********************************************</h1>
+
+<h1>Comments: </h1><br>
+<h1>-----------------------------------------</h1>
 <% @game.comments.each do |c|%>
     <p><strong><%= c.user.username%></strong>: <%= c.content%> </p>
 <% end %>
-<%= link_to '<button type="button">Post Comment</button>'.html_safe, new_game_comment_path(@game)%>
-<%= link_to '<button type="button">Edit</button>'.html_safe, edit_game_path(@game) %>
+<%= link_to '<button type="button">Post Comment</button>'.html_safe, new_game_comment_path(@game) %>
+<% if @game.user == current_user %>
+    <%= link_to '<button type="button">Edit Game</button>'.html_safe, edit_game_path(@game) %>
+    <%= link_to '<button type="button">Delete Game</button>'.html_safe, game_path(@game), method: :delete%>
+<% end %>
