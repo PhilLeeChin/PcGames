@@ -34,6 +34,30 @@ button:hover, .submit:hover .google:hover{
   color: black;
 }
 
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: white;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #0057ac;
+  color: white;
+}
+
 h1, p, .form-control{
   font-family: 'Lobster', cursive;
 }
