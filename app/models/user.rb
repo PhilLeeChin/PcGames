@@ -1,7 +1,7 @@
 require 'securerandom'
 class User < ApplicationRecord
-    has_many :games
-    has_many :comments
+    has_many :games, dependent: :delete_all
+    has_many :comments, dependent: :delete_all
     has_many :commented_games, through: :comments, source: :game
 
     has_secure_password
