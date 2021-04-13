@@ -1,14 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Welcome to PcGames, this is a web based applications where users can share their favorite games played on PC.
+Users are able to add their own games to have feedback from others with comments.
 
 * Ruby version
 - ruby 2.6.1
 
 * Deployment instructions
+- Install the webpacker gem
+- Run bundle install
+
+- App can be started up with running the command 'rails s' after bundle install is complete
 - In any web browser load the following page:
     - http://localhost:3000
 * Once on the webpage, the users have the following options
