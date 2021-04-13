@@ -10,6 +10,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <div class="topnav">
+  <% if session.has_key?(:user_id) %>
+      <%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
+      <%= link_to '<button type="button">Game List</button>'.html_safe, games_path %>
+      <%= link_to '<button type="button">Sign Out</button>'.html_safe, signout_path, method: :delete %>
+  <% else %>
+      <%= link_to '<button type="button">Login</button>'.html_safe, login_path %>
+      <%= link_to '<button type="button">Register</button>'.html_safe, register_path %>
+  <% end %>
+  </div>
   
   <body>
     <%= yield %>
