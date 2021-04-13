@@ -1,12 +1,9 @@
 <%= form_for(@game) do |g| %>
-    <label>Game title:</label><br>
-    <%= g.text_field :title %><br>
-
-    <label>Game Developer</label><br>
-    <%= g.text_field :developer %><br>
-
-    <label>Genre</label><br>
-    <%= g.text_field :genre %><br>
+    <label>Game title: <%= g.text_field :title %></label><br>
+  
+    <label>Game Developer: <%= g.text_field :developer %></label><br>
+  
+    <label>Genre: <%= g.text_field :genre %></label><br>
     
     <%= g.submit %>
 <% end %>
